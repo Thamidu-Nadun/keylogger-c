@@ -46,11 +46,12 @@ LRESULT CALLBACK hook_proc(int code, WPARAM w_param, LPARAM l_param){
 }
 
 int main(){
+
     // set the hook
     h_hook = SetWindowsHookEx(WH_KEYBOARD_LL, hook_proc, NULL, 0);
     if (h_hook == NULL){
         printf("Failed to set hook\n");
-        return 1;
+        return -1;
     }
 
     printf("Listening for the key inputs");
@@ -62,6 +63,8 @@ int main(){
         DispatchMessage(&msg);
     }
 
+    // unmount the hook
     UnhookWindowsHookEx(h_hook);
+
     return 0;
 }

@@ -1,2 +1,5 @@
 .vscode/
 log.txt
+server.exe
+tool/*.exe
+tool/*.txt

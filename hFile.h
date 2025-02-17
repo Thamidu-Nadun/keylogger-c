@@ -1,9 +1,14 @@
-#include <stdio.h>
-#include <windows.h>
+#include "common.h"
 #include "config.h"
 
+#define FULL_FILE_PATH FILE_PATH "\\" FILE_NAME
+
+void ensureFileExists(){
+    CreateDirectory(FILE_PATH, NULL);
+}
 void writeToFile(WCHAR ch){
-    FILE *file = fopen(FILE_NAME, "a");
+    ensureFileExists();
+    FILE *file = fopen(FULL_FILE_PATH, "a");
     if (file == NULL){
         printf("Error opening file\n");
         return;
