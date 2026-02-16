@@ -1,0 +1,1 @@
+#define FILE_NAME "log.txt"
